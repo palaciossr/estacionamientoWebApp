@@ -11,8 +11,8 @@ public class AutoController {
 	
 	@GetMapping("/listar")
 	public String listarAutos(Model model) {
+		model.addAttribute("titulo","Estracionamiento las Olas");
 		return "/inicio/listar";
 		
 	}
-
 }
