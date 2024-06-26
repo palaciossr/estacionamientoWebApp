@@ -23,6 +23,7 @@ public class AutoService implements IAutoService{
 	}
 
 	@Override
+	@Transactional
 	public void save(Auto auto) {
 		autoDao.save(auto);
 		
