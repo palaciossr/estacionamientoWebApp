@@ -30,14 +30,16 @@ public class AutoService implements IAutoService{
 	}
 
 	@Override
-	public void editar(Auto auto) {
-		 Auto autoExistente = autoDao.findById(auto.getMatricula()).orElseThrow();
-	        autoExistente.setMatricula(auto.getMatricula());
-	        autoExistente.setMarca(auto.getMarca());
-	        autoExistente.setModelo(auto.getModelo());
-	        autoExistente.setColor(auto.getColor());
-	        autoDao.save(autoExistente);
-		
+	@Transactional
+	public Auto actualizarAuto(Auto auto) {
+		return autoDao.save(auto);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Auto obtenerAutoPorMatricula(String matricula) {
+		 return autoDao.findById(matricula).orElse(null);
+	}
+
 
 }
