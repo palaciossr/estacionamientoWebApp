@@ -26,11 +26,11 @@ public class AutoController {
 	public String listarAutos(Model model) {
 	    List<Auto> autos = autoService.findAllOrderedByMatricula();
 	    model.addAttribute("titulo", "Estacionamiento las Olas");
-	    model.addAttribute("autos", autos);
+	    model.addAttribute("autos", autos); 
 	    return "/inicio/inicio";
 	}
 	
-	@PostMapping("/autos/guardar")
+    @PostMapping("/autos/guardar")
     @ResponseBody
     public ResponseEntity<String> guardarAuto(@RequestBody Auto auto) {
         try {

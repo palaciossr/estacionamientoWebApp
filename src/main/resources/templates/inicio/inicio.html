@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout/layoutInicio :: headDecorate}">
 	<title th:text="${titulo}"></title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<header th:replace="~{layout/layoutInicio:: headerEncabezado}"></header>
@@ -14,64 +15,66 @@
 	</div>
 	
 	  <div><!-- Tabla para mostrar autos -->
-        <table class="table table-striped mt-4" id="tablaAutos">
-            <thead>
-                <tr>
-                    <th>Matrícula</th>
-                    <th>Marca</th>
-                    <th>Modelo</th>
-                    <th>Color</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="auto : ${autos}">
-                    <td th:text="${auto.matricula}"></td>
-                    <td th:text="${auto.marca}"></td>
-                    <td th:text="${auto.modelo}"></td>
-                    <td th:text="${auto.color}"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+	    <table class="table table-hover" id="tablaAutos">
+	        <thead>
+	            <tr>
+	                <th>Matrícula</th>
+	                <th>Marca</th>
+	                <th>Modelo</th>
+	                <th>Color</th>
+	                <th>Acciones</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            <tr th:each="auto : ${autos}">
+	                <td th:text="${auto.matricula}"></td>
+	                <td th:text="${auto.marca}"></td>
+	                <td th:text="${auto.modelo}"></td>
+	                <td th:text="${auto.color}"></td>
+	                <td>
+	                     <i class="fa-regular fa-pen-to-square"></i>
+	                </td>
+	            </tr>
+	        </tbody>
+	    </table>
+	</div>
+
     
-	
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-                <h5 class="modal-title" id="modalAgregarAutoLabel">Agregar Nuevo Auto</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- Aquí va el formulario para agregar un nuevo auto -->
-               <form id="formAgregarAuto" action="/autos/guardar" method="post">
-                    <div class="form-group">
-                        <label for="matricula">Matrícula:</label>
-                        <input type="text" class="form-control" id="matricula" name="matricula">
-                    </div>
-                    <div class="form-group">
-                        <label for="marca">Marca:</label>
-                        <input type="text" class="form-control" id="marca" name="marca">
-                    </div>
-                    <div class="form-group">
-                        <label for="modelo">Modelo:</label>
-                        <input type="text" class="form-control" id="modelo" name="modelo">
-                    </div>
-                    <div class="form-group">
-                        <label for="color">Color:</label>
-                        <input type="text" class="form-control" id="color" name="color">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary" id ="btnGuardarAuto">Ingresar</button>
-            </div>
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAgregarAutoLabel" th:text="${tituloModal}">Agregar Nuevo Auto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="formAgregarAuto" action="/autos/guardar" method="post">
+          <div class="form-group">
+            <label for="matricula">Matrícula:</label>
+            <input type="text" class="form-control" id="matricula" name="matricula">
+          </div>
+          <div class="form-group">
+            <label for="marca">Marca:</label>
+            <input type="text" class="form-control" id="marca" name="marca">
+          </div>
+          <div class="form-group">
+            <label for="modelo">Modelo:</label>
+            <input type="text" class="form-control" id="modelo" name="modelo">
+          </div>
+          <div class="form-group">
+            <label for="color">Color:</label>
+            <input type="text" class="form-control" id="color" name="color">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary" id="btnGuardarAuto">Ingresar</button>
+      </div>
     </div>
+  </div>
 </div>
 </body>
  	<script src="/javascript/listarAutos.js"></script>

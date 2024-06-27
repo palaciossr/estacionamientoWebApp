@@ -7,5 +7,6 @@ public interface IAutoService {
 	
 	public List<Auto> findAllOrderedByMatricula();
 	public void save(Auto auto);
+	public void editar(Auto auto);
 
 }

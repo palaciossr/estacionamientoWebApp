@@ -29,4 +29,15 @@ public class AutoService implements IAutoService{
 		
 	}
 
+	@Override
+	public void editar(Auto auto) {
+		 Auto autoExistente = autoDao.findById(auto.getMatricula()).orElseThrow();
+	        autoExistente.setMatricula(auto.getMatricula());
+	        autoExistente.setMarca(auto.getMarca());
+	        autoExistente.setModelo(auto.getModelo());
+	        autoExistente.setColor(auto.getColor());
+	        autoDao.save(autoExistente);
+		
+	}
+
 }
