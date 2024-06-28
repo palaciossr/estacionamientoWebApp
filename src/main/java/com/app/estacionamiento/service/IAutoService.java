@@ -7,6 +7,8 @@ public interface IAutoService {
 	
 	public List<Auto> findAllOrderedByMatricula();
 	public void save(Auto auto);
-	public Auto actualizarAuto(Auto auto);
 	public Auto obtenerAutoPorMatricula(String matricula);
+	public Auto actualizarAuto(Auto auto);
+	public void eliminarAuto(Auto auto);
+	
 }

@@ -41,5 +41,11 @@ public class AutoService implements IAutoService{
 		 return autoDao.findById(matricula).orElse(null);
 	}
 
+	@Override
+	public void eliminarAuto(Auto auto) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

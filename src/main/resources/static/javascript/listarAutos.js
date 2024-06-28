@@ -30,6 +30,8 @@ $(document).ready(function () {
     $('.btnEditarAuto').on('click', function () {
         var matriculaAuto = $(this).data('matricula');
 
+        mostrarLoader(); // Mostrar loader antes de la llamada AJAX
+
         // Llamar al backend para obtener los datos del auto por matrícula
         $.ajax({
             url: '/autos/' + matriculaAuto,
@@ -47,9 +49,11 @@ $(document).ready(function () {
 
                 // Mostrar el modal de edición
                 $('#exampleModal').modal('show');
+                ocultarLoader(); // Ocultar loader después de la llamada AJAX
             },
             error: function (error) {
                 console.error('Error al obtener los datos del auto', error);
+                ocultarLoader(); // Ocultar loader en caso de error
             }
         });
     });
@@ -63,6 +67,8 @@ $(document).ready(function () {
             color: $('#color').val()
         };
 
+        mostrarLoader(); // Mostrar loader antes de la llamada AJAX
+
         // Llamar al backend para actualizar los datos del auto
         $.ajax({
             url: '/autos/editar',
@@ -72,10 +78,11 @@ $(document).ready(function () {
             success: function (response) {
                 console.log('Auto actualizado con éxito', response);
                 $('#exampleModal').modal('hide');
-                location.reload(); // Otra forma de actualizar la vista
+                ocultarLoader(); // Ocultar loader después de la llamada AJAX
             },
             error: function (error) {
                 console.error('Error al actualizar el auto', error);
+                ocultarLoader(); // Ocultar loader en caso de error
             }
         });
     });
